@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import '/pages/chat.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -51,6 +52,13 @@ class _HomepageState extends State<Homepage> {
                 if (user != null) {
                   print('User signed in: ${user.user?.displayName}');
                   // Navigate to another screen or update the UI as needed
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return Chat();
+                      },
+                    ),
+                  );
                 } else {
                   print('User cancelled the sign-in flow');
                 }
