@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
-import '/pages/chat.dart';
+import 'chooseRoom.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -55,7 +55,7 @@ class _HomepageState extends State<Homepage> {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return Chat();
+                        return chooseRoom();
                       },
                     ),
                   );
