@@ -16,6 +16,7 @@ class _HomepageState extends State<Homepage> {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
   Future<UserCredential?> signInWithGoogle() async {
+    await googleSignIn.signOut();
     // Trigger the Google Sign-In flow
     final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
 
@@ -34,6 +35,20 @@ class _HomepageState extends State<Homepage> {
 
     // Sign in to Firebase with the credential
     return await firebaseAuth.signInWithCredential(credential);
+  }
+
+  Future<void> _signOut() async {
+    try {
+      await googleSignIn.signOut();
+      await firebaseAuth.signOut();
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => Homepage()),
+        (route) => false,
+      );
+    } catch (e) {
+      print('Error signing out: $e');
+    }
   }
 
   @override
@@ -55,7 +70,7 @@ class _HomepageState extends State<Homepage> {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return ChooseRoom();
+                        return ChooseRoom(); // Navigate to ChooseRoom widget
                       },
                     ),
                   );
@@ -63,6 +78,10 @@ class _HomepageState extends State<Homepage> {
                   print('User cancelled the sign-in flow');
                 }
               },
+            ),
+            ElevatedButton(
+              onPressed: _signOut,
+              child: Text("Sign Out"),
             ),
           ],
         ),

@@ -14,6 +14,19 @@ class _ChooseRoomState extends State<ChooseRoom> {
   final TextEditingController _roomController = TextEditingController();
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
+  Future<void> _signOut() async {
+    try {
+      await firebaseAuth.signOut();
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => Homepage()),
+        (route) => false,
+      );
+    } catch (e) {
+      print('Error signing out: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     User? user = firebaseAuth.currentUser;
@@ -56,6 +69,10 @@ class _ChooseRoomState extends State<ChooseRoom> {
                 }
               },
               child: Text("Enter room"),
+            ),
+            ElevatedButton(
+              onPressed: _signOut,
+              child: Text("Sign Out"),
             ),
           ],
         ),
