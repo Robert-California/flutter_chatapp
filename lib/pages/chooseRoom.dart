@@ -30,12 +30,12 @@ class _ChooseRoomState extends State<ChooseRoom> {
   @override
   Widget build(BuildContext context) {
     User? user = firebaseAuth.currentUser;
-    String displayMessage = "Welcome";
+    String displayMessage = "Velkommen";
     if (user != null) {
-      displayMessage = "Welcome ${user.displayName}";
+      displayMessage = "Velkommen ${user.displayName}";
     }
     return Scaffold(
-      appBar: AppBar(title: Text('Choose a room')),
+      appBar: AppBar(title: Text('Vælg et rum eller lav dit eget!')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +50,7 @@ class _ChooseRoomState extends State<ChooseRoom> {
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Enter a room name',
+                  labelText: 'Skriv navnet på et rum',
                   labelStyle: TextStyle(fontSize: 20),
                 ),
               ),
@@ -68,11 +68,11 @@ class _ChooseRoomState extends State<ChooseRoom> {
                   );
                 }
               },
-              child: Text("Enter room"),
+              child: Text("Tilgå rum"),
             ),
             ElevatedButton(
               onPressed: _signOut,
-              child: Text("Sign Out"),
+              child: Text("Log ud"),
             ),
           ],
         ),

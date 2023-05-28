@@ -54,7 +54,7 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Google Sign-In with Firebase')),
+      appBar: AppBar(title: Text('Login med Google')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -78,10 +78,6 @@ class _HomepageState extends State<Homepage> {
                   print('User cancelled the sign-in flow');
                 }
               },
-            ),
-            ElevatedButton(
-              onPressed: _signOut,
-              child: Text("Sign Out"),
             ),
           ],
         ),

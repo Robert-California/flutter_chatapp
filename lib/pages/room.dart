@@ -61,11 +61,10 @@ class _RoomState extends State<Room> {
               }
             },
           )),
-          Text("Hej" + firebaseAuth.currentUser!.displayName.toString() + "!"),
           _imageFile != null ? Image.file(_imageFile!) : SizedBox(),
           ElevatedButton(
             onPressed: _pickImage,
-            child: Text('Select Image'),
+            child: Text('Tilføj billede'),
           ),
           TextField(
             controller: _messageController,
